@@ -15,9 +15,54 @@ app.use(cors());
 const db = connection.createConnection({
   host: "localhost",
   user: "root",
-  password: "23647619rbk",
-  database: "project"
+  password: "root",
+  database: "schoooly"
 })
+
+
+app.get('/use',(req,res)=>{
+  const sqlSelect="SELECT * FROM courses"
+  db.query(sqlSelect, (err, result)=>{
+      console.log('erreur',err)
+      console.log('result',result)
+      res.json(result)
+  })
+
+})
+
+app.post('/create', (req, res) => {
+  const course  = req.body;
+  console.log("creating course", course); 
+  db.query(
+    `INSERT INTO courses (name, subject, hour) VALUES (?, ?, ?)`,
+    [course.name, course.subject, course.hour],
+    (error, results) => {
+      if (error) {
+        console.log(error);
+        res.status(500).send(error.message);
+      } else {
+        res.status(200).send(results);
+      }
+    }
+  );
+});
+
+
+app.delete('/course/:name', (req, res) => {
+  const name = req.params.name;
+  db.query('DELETE FROM courses WHERE name = ?', name, (err, result) => {
+    if (err) {
+      console.error('Error deleting course:', err);
+      res.status(500).send('Error deleting course');
+    } else if (!result.affectedRows) { 
+      console.log('course not found');
+      res.status(404).send('course not found');
+    } else {
+      console.log('course deleted successfully');
+      res.send('course deleted successfully');
+    }
+  });
+});
 
 // this is connection
 db.connect(function (err) {
@@ -63,6 +108,6 @@ app.post("/login",(req,res)=>{
   
   
  
-app.listen(3002, () => {
-  console.log("listening on 3002");
+app.listen(3000, () => {
+  console.log("listening on 3000");
 });
