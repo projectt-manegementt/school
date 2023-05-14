@@ -1,0 +1,24 @@
+.marj{
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7nK6WlNbe35oslg2Iz2RbI1v2RAAe4vyy3g&usqp=CAU%27');
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+height: 100vh;
+margin: 0;
+padding: 0;
+}
+
+.foufou{
+    display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+}
+
+h1{
+    text-align: center;
+    color: black;
+    font-size: 48px;
+    margin-top: 20px;
+    transition: color 0.3s ease;
+}
