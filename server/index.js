@@ -6,12 +6,19 @@ app.use(express.json());
 
 app.use(cors());
 
-const db=mysql.createConnection({
-  host:'localhost',
-  user:'root',
-  password:'root',
-  database:'schoooly'
+// const db=mysql.createConnection({
+//   host:'localhost',
+//   user:'root',
+//   password:'root',
+//   database:'schoooly'
+// })
+const db = connection.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "23647619rbk",
+  database: "project"
 })
+
 // this is connection
 db.connect(function (err) {
   if (err) console.log("Error to connect to database", err);
@@ -56,6 +63,6 @@ app.post("/login",(req,res)=>{
   
   
  
-app.listen(3000, () => {
-  console.log("listening on 3000");
+app.listen(3002, () => {
+  console.log("listening on 3002");
 });
