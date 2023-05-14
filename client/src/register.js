@@ -7,6 +7,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Myimage from './assets/login.jpg'
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import './Login.css'
 
 
 export default function Register() {
@@ -29,7 +30,13 @@ export default function Register() {
      }
  
      return (
-       <form style={{width:"35%",alignItems:'center',justifyContent:'center',}}>
+      <div className='marj'>
+        <di >
+          <br></br><br></br><h1>
+            Schooly Web Application
+          </h1>
+        </di>
+<br></br><br></br><br></br><br></br><br></br><form style={{ width: "35%", alignItems: 'center', justifyContent: 'center', margin: '0 auto' }}>
          
          <Card sx={{ display: 'flex' }} >
          <div style={{justifyContent:'center',alignItems:'center'}}>
@@ -63,6 +70,7 @@ export default function Register() {
        </div>
          </Card>
        </form>
+       </div>
      )
    
  }

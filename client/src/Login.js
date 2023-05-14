@@ -5,6 +5,7 @@ import Card from '@mui/material/Card'
 import CardMedia from '@mui/material/CardMedia';
 import Myimage from './assets/login.jpg'
 import axios from 'axios';
+import './Login.css'
 
 import { Link } from 'react-router-dom'; 
 import { useNavigate } from "react-router-dom";
@@ -22,7 +23,7 @@ import { useNavigate } from "react-router-dom";
           password:password
       }).then(function (response) {
             console.log(response.data);
-            navigate("/home")
+            navigate("/HomePage")
           })
           .catch(function (error) {
             setError('password or email not found')
@@ -30,45 +31,46 @@ import { useNavigate } from "react-router-dom";
     }
 
     return (
-      <form style={{width:"35%",alignItems:'center',justifyContent:'center',}}>
-        
-        <Card sx={{ display: 'flex' }} >
-        <div style={{justifyContent:'center',alignItems:'center'}}>
-        <div className="mb-3">
-          <TextField id="outlined-basic" label="Email" variant="outlined" style={{marginBottom:10,marginTop:10,left:10}} value={email}
-           onChange={(e)=>{
-            const {value}=e.target;
-           setEmail(value)}}/>
-        </div>
-        <div className="mb-3" >
-          
-          <TextField id="outlined-basic" label="Password" variant="outlined"  style={{marginBottom:20,marginTop:10,left:10}} value={password} 
-          onChange={(e)=>{
-            const {value}=e.target;
-            setPassword(value)}} />
-        </div>
-        <div className="d-grid">
+      <div className='marj'>
+         <di >
+         <br></br><br></br> <h1>
+            Schooly Web Application
+          </h1>
+        </di>
+    <br></br><br></br><br></br><br></br> <form style={{ width: "35%", alignItems: 'center', justifyContent: 'center', margin: '0 auto' }}>
+  <Card sx={{ display: 'flex' }}>
+    <div style={{ justifyContent: 'center', alignItems: 'center' }}>
+      <div className="mb-3">
+        <TextField id="outlined-basic" label="Email" variant="outlined" style={{marginBottom:10,marginTop:10,left:10}} value={email} onChange={(e)=>{
+          const {value}=e.target;
+          setEmail(value)
+        }}/>
+      </div>
+      <div className="mb-3" >
+        <TextField id="outlined-basic" label="Password" variant="outlined"  style={{marginBottom:20,marginTop:10,left:10}} value={password} onChange={(e)=>{
+          const {value}=e.target;
+          setPassword(value)
+        }} />
+      </div>
+      <div className="d-grid">
         <Button variant="contained" style={{marginBottom:10}} onClick={onclickButton}>Sign In</Button>
-        </div>
-        {error &&<text style={{color:'red'}}>{error}</text>}
-        <br></br>
-        <text>dont have accont?<Link to='/register'>Sign Up</Link></text>
-       
-        </div>
-       
-        <div style={{left:20}}> 
-        <CardMedia
+      </div>
+      {error &&<text style={{color:'red'}}>{error}</text>}
+      <br></br>
+      <text>dont have accont?<Link to='/register'>Sign Up</Link></text>
+    </div>
+    <div style={{left:20}}> 
+      <CardMedia
         component="img"
-        sx={{ width:200 ,}}
+        sx={{ width:200 }}
         image={Myimage}
         alt="Live from space album cover"
-        
         style={{left:16}}
       />
+    </div>
+  </Card>
+</form>
       </div>
-
-        </Card>
-      </form>
     )
   
 }
